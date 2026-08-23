@@ -1,1 +1,56 @@
-{"targets": {}, "reddit_seen": [], "last_heartbeat": 0}
+{
+  "targets": {
+    "ShopAtSC - PS5 consoles (API)": {
+      "status": "OUT_OF_STOCK",
+      "last_alert": 0,
+      "price": ""
+    },
+    "ShopAtSC - all PlayStation 5 (API)": {
+      "status": "OUT_OF_STOCK",
+      "last_alert": 0,
+      "price": ""
+    },
+    "Vijay Sales - PS5 search": {
+      "status": "OUT_OF_STOCK",
+      "last_alert": 0,
+      "price": "\u20b940,000"
+    },
+    "Flipkart - PS5 search": {
+      "status": "OUT_OF_STOCK",
+      "last_alert": 0,
+      "price": "\u20b939,990"
+    },
+    "Amazon.in - PS5 search": {
+      "status": "UNKNOWN",
+      "last_alert": 0,
+      "price": ""
+    },
+    "Blinkit - PS5 search": {
+      "status": "ERROR",
+      "last_alert": 0,
+      "price": ""
+    },
+    "Zepto - PS5 Slim console": {
+      "status": "ERROR",
+      "last_alert": 0,
+      "price": ""
+    },
+    "Zepto - PS5 search": {
+      "status": "ERROR",
+      "last_alert": 0,
+      "price": ""
+    },
+    "Swiggy Instamart - PS5 search": {
+      "status": "ERROR",
+      "last_alert": 0,
+      "price": ""
+    },
+    "JioMart - PS5 search": {
+      "status": "UNKNOWN",
+      "last_alert": 0,
+      "price": ""
+    }
+  },
+  "reddit_seen": [],
+  "last_heartbeat": 1787479318.042404
+}
