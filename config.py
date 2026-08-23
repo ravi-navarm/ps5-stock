@@ -91,55 +91,67 @@ TARGETS = [
         "enabled": True,
     },
     {
+        # "no decisive signal" = this is a search page, and the add-to-cart
+        # check only works on product pages. When a PS5 listing exists, open
+        # it, copy the amazon.in/dp/XXXXXXXXXX URL, and paste it here. That
+        # single change turns Amazon from a guess into a reliable check.
         "name": "Amazon.in - PS5 search",
         "url": "https://www.amazon.in/s?k=playstation+5+console&i=videogames",
         "type": "amazon",
         "enabled": True,
     },
 
-    # ================= QUICK COMMERCE =================
-    # Sony has sold the PS5 Slim via Blinkit since April 2024; Zepto lists it
-    # too. Two caveats:
-    #   1. Stock is per dark-store -- without exact coordinates these may
-    #      report a different store's inventory than the one serving you.
-    #   2. The 2024 Blinkit rollout covered Delhi NCR, Mumbai, Bengaluru.
-    #      Whether Hyderabad is served, the first run will tell you.
+    # ================= QUICK COMMERCE (all off -- see note) =================
+    # Tested and all four failed:
+    #   Blinkit   -> HTTP 403. Bot protection; a bare lat/lon header is not
+    #                enough, their API wants a real app session token.
+    #   Zepto     -> empty HTML shell. React SPA, products load after JS runs.
+    #   Instamart -> same.
+    #
+    # These are not fixable by tweaking headers. Two real options:
+    #   (a) Find the internal XHR endpoint in DevTools while logged in with
+    #       your location set -- see "Reviving quick commerce" in DEPLOY.md.
+    #   (b) Drive a headless browser (Playwright). Works, but ~15s per site
+    #       and heavy for a free runner.
+    #
+    # Worth weighing: Sony's Blinkit rollout covered Delhi NCR, Mumbai and
+    # Bengaluru. Hyderabad coverage is unconfirmed, so this may buy nothing.
     {
         "name": "Blinkit - PS5 search",
         "url": "https://blinkit.com/s/?q=playstation%205",
         "type": "html",
         "headers": QC_HEADERS,
-        "enabled": True,
+        "enabled": False,
     },
     {
         "name": "Zepto - PS5 Slim console",
-        # Verified live product page, not a guessed search URL.
         "url": "https://www.zepto.com/pn/playstation-5-console-slim-playstation-5-console-e-chasis-slim/pvid/ad968d7d-c5d8-415e-b7d4-58f84ff13076",
         "type": "html",
         "headers": QC_HEADERS,
-        "enabled": True,
+        "enabled": False,
     },
     {
         "name": "Zepto - PS5 search",
         "url": "https://www.zepto.com/search?query=playstation%205",
         "type": "html",
         "headers": QC_HEADERS,
-        "enabled": True,
+        "enabled": False,
     },
     {
         "name": "Swiggy Instamart - PS5 search",
         "url": "https://www.swiggy.com/instamart/search?custom_back=true&query=playstation",
         "type": "html",
         "headers": QC_HEADERS,
-        "enabled": True,
+        "enabled": False,
     },
 
     # ================= JS-RENDERED / BROKEN =================
     {
+        # Also a JS shell -- returned "no PS5 mention on page".
         "name": "JioMart - PS5 search",
         "url": "https://www.jiomart.com/search/playstation%205",
         "type": "html",
-        "enabled": True,
+        "enabled": False,
     },
     {
         # Both /search/ps5 and /Search/... now 404 -- the site changed its URL

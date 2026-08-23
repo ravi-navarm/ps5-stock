@@ -141,9 +141,18 @@ def main():
 
     if args.test:
         print("curl_cffi:", "yes" if checkers.HAS_CFFI else "NO (install it)")
+        print("telegram :", "ready" if notify.credentials_ok()
+              else "NOT CONFIGURED - " + ", ".join(notify.missing()) + " missing")
         notify.send("🧪 PS5 tracker test — delivery is working.")
         results, _ = sweep(load_state(), verbose=True)
         return
+
+    if not notify.credentials_ok():
+        print("=" * 62)
+        print(" WARNING: " + ", ".join(notify.missing()) + " missing.")
+        print(" Alerts will print to this terminal, NOT to Telegram.")
+        print(" Fix: put them in a .env file, then `python notify.py --check`")
+        print("=" * 62)
 
     state = load_state()
 
