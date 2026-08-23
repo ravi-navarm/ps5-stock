@@ -1,0 +1,42 @@
+name: PS5 stock check
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"     # every 5 min (GitHub's minimum; often runs late)
+  workflow_dispatch:           # lets you trigger a check manually
+
+permissions:
+  contents: write              # needed to commit state.json back
+
+concurrency:
+  group: ps5-check
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Run check
+        env:
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
+        run: python main.py --once
+
+      - name: Persist state
+        run: |
+          git config user.name  "ps5-bot"
+          git config user.email "ps5-bot@users.noreply.github.com"
+          git add state.json
+          git diff --staged --quiet || git commit -m "state: $(date -u +%H:%M)"
+          git pull --rebase --autostash || true
+          git push || true
