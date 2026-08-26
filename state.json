@@ -16,9 +16,9 @@
       "price": "\u20b940,000"
     },
     "Flipkart - PS5 search": {
-      "status": "OUT_OF_STOCK",
+      "status": "ERROR",
       "last_alert": 0,
-      "price": "\u20b939,990"
+      "price": ""
     },
     "Amazon.in - PS5 search": {
       "status": "OUT_OF_STOCK",
