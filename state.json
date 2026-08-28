@@ -16,12 +16,12 @@
       "price": "\u20b940,000"
     },
     "Flipkart - PS5 search": {
-      "status": "ERROR",
+      "status": "OUT_OF_STOCK",
       "last_alert": 0,
-      "price": ""
+      "price": "\u20b939,990"
     },
     "Amazon.in - PS5 search": {
-      "status": "UNKNOWN",
+      "status": "ERROR",
       "last_alert": 0,
       "price": ""
     },
@@ -52,5 +52,5 @@
     }
   },
   "reddit_seen": [],
-  "last_heartbeat": 1787844387.8903768
+  "last_heartbeat": 1787917267.5853336
 }
