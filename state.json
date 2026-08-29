@@ -21,7 +21,7 @@
       "price": "\u20b939,990"
     },
     "Amazon.in - PS5 search": {
-      "status": "UNKNOWN",
+      "status": "ERROR",
       "last_alert": 0,
       "price": ""
     },
@@ -52,5 +52,5 @@
     }
   },
   "reddit_seen": [],
-  "last_heartbeat": 1787917267.5853336
+  "last_heartbeat": 1787973507.5209053
 }
